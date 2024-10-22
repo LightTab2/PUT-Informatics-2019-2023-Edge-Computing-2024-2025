@@ -1,0 +1,1 @@
+cmd_/home/debian/buildroot_external/package/drivor/modules.order := {   echo /home/debian/buildroot_external/package/drivor/drivor.ko; :; } > /home/debian/buildroot_external/package/drivor/modules.order

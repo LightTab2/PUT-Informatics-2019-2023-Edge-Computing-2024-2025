@@ -1,0 +1,2 @@
+load-target "risc-v-simple/linux"
+run

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alarms for {{ sensor.name }}</title>
+</head>
+<body>
+    <h1>Alarms for Sensor: {{ sensor.name }}</h1>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Value</th>
+                <th>Sound</th>
+                <th>Priority</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for alarm in sensor.alarms %}
+                <tr>
+                    <td>{{ alarm.value }}</td>
+                    <td>{{ alarm.sound }}</td>
+                    <td>{{ alarm.priority }}</td>
+                    <td>
+                        <form style="display: inline;" method="post" onsubmit="return confirm('Are you sure you want to remove this alarm?')">
+                            <input type="hidden" name="alarm_value_to_remove" value="{{ alarm.value }}">
+                            <button type="submit">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <hr>
+    <form action="/alarms/{{ sensor.name }}" method="POST">
+        <label for="value">Value:</label>
+        <input type="number" id="value" name="value" required>
+        <label for="sound">Sound:</label>
+        <input type="text" id="sound" name="sound" required>
+        <label for="priority">Priority:</label>
+        <input type="number" id="priority" name="priority" required>
+        <button type="submit">Add Alarm</button>
+    </form>
+    <a href="/">Home</a>
+</body>
+</html>

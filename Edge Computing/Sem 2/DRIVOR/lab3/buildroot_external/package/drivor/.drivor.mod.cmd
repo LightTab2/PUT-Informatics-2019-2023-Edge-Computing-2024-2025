@@ -1,0 +1,1 @@
+cmd_/home/debian/buildroot_external/package/drivor/drivor.mod := printf '%s\n'   drivor.o | awk '!x[$$0]++ { print("/home/debian/buildroot_external/package/drivor/"$$0) }' > /home/debian/buildroot_external/package/drivor/drivor.mod

@@ -1,0 +1,5 @@
+project: /home/debian/simics-projects/lab2
+simics-root: /home/debian/simics/simics-6.0.198
+simics-model-builder: /home/debian/simics/simics-6.0.198
+simics-python: /home/debian/simics/simics-6.0.198
+mingw: None

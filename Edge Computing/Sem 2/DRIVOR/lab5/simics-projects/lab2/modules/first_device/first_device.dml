@@ -1,0 +1,63 @@
+/*
+  © 2010 Intel Corporation
+*/
+
+// first_device.dml - Skeleton code to base new DML device modules on
+
+dml 1.4;
+
+device first_device;
+
+param desc = "first_device";
+
+param documentation = "It's me, first_device!";
+
+import "utility.dml";
+
+// USER-TODO: add connect definitions here, if needed
+
+// USER-TODO: add attribute definitions here, if needed
+
+// Basic bank declaration
+bank regs
+{
+	param register_size = 4;
+    // USER-TODO: Add more register declarations here.  Usually use just one
+    // line per register, containing size (optional), offset, any templates
+    // implemented, and a short description. The default behaviour of registers
+    // is a normal register behaviour where a read returns the last written
+    // value. Use the unimpl template for registers that you haven't yet
+    // implemented.
+	register readCount size 4 @ 0x00 "How many times the device was read."
+	{
+	// /home/debian/simics/simics-6.0.198/linux64/bin/dml/1.4/dml-builtins.dml:3144:5: error: no assignment to parameter 'lsb'
+	// tutorial klamie https://www2.cs.sfu.ca/CourseCentral/886/fedorova/Tools/Simics-solaris/simics-3.0.25/doc/dml-tutorial.pdf albo to problem z wersja simics
+        	//field counter;
+
+        	//method read(uint32 address, uint32 size) -> (uint32)
+        	//{
+		//	return counter;
+        	//}
+
+		//method write(uint32 address, uint32 size, uint32 value)
+		//{
+		//	counter = value;
+		//}
+	}
+    //register unimplemented @ 0x04 is (unimpl) "An unimplemented register."; //niepotrzebne?
+}
+
+// USER-TODO: add implement and port declarations here, if needed
+
+// USER-TODO: add event declarations here, if needed
+
+// USER-TODO: add common methods here, if needed
+
+// USER-TODO: add templates here, if needed
+
+// USER-TODO: Add init() and post_init() methods here, if needed.
+// init() will be run to set the empty state of the model, before any
+// configuration or checkpointed attributes are set.  post_init() is run after
+// all configuration attributes have been set.  This happens both when the
+// initial configuration is set and when the configuration is loaded from a
+// checkpoint.

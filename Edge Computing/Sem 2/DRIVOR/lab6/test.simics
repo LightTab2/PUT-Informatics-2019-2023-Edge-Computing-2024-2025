@@ -1,0 +1,34 @@
+@SIM_create_object("first_device", "dev1", [])
+load-target "risc-v-simple/linux"
+board.phys_mem.add-map dev1:regs 0x01000000 0x20
+memory-map
+
+board.phys_mem.write 0x01000008 42
+echo "\ntest 4 * 6"
+board.phys_mem.write 0x01000000 4
+board.phys_mem.write 0x01000004 6
+echo "wynik = " + (board.phys_mem.read 0x0100000C)
+
+board.phys_mem.write 0x01000008 45
+echo "\ntest 20 - 20"
+board.phys_mem.write 0x01000000 20
+board.phys_mem.write 0x01000004 20
+echo "wynik = " + (board.phys_mem.read 0x0100000C)
+
+echo "\ntest 20 - 14"
+board.phys_mem.write 0x01000004 14
+board.phys_mem.write 0x01000000 20
+echo "wynik = " + (board.phys_mem.read 0x0100000C)
+
+echo "\ndziwny test po zmianie kolejnosci argumentow (wychodzi liczba ujemna, a jest zapisana jako unsigned)\ntest 14 - 20"
+board.phys_mem.write 0x01000000 20
+board.phys_mem.write 0x01000004 14
+echo "wynik = " + (board.phys_mem.read 0x0100000C)
+
+board.phys_mem.write 0x01000008 43
+echo "\ntest 24 + 11"
+board.phys_mem.write 0x01000000 4
+board.phys_mem.write 0x01000004 6
+echo "wynik = " + (board.phys_mem.read 0x0100000C)
+
+run

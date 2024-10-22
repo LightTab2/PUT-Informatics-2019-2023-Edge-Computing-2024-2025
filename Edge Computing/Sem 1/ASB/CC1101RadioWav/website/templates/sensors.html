@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensors</title>
+    <script>
+        function confirmSensorRemoval(sensorName) {
+            if (confirm('Are you sure you want to remove sensor ' + sensorName + '?')) {
+                document.getElementById('sensor_name_to_remove').value = sensorName;
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Sensors</h1>
+    <ul>
+        {% for sensor in sensors %}
+            <li>{{ sensor.name }}
+                <form style="display: inline;" method="post" onsubmit="return confirmSensorRemoval('{{ sensor.name }}')">
+                    <input type="hidden" name="sensor_name_to_remove" id="sensor_name_to_remove">
+                    <button type="submit">Remove</button>
+                </form>
+                <ul>
+                    <li><a href="/history/{{ sensor.name }}">View History</a></li>
+                    <li><a href="/alarms/{{ sensor.name }}">View Alarm Sounds</a></li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+    <form onsubmit="return validateInput()" action="/" method="POST">
+        <label for="sensor_name">Sensor Name:</label>
+        <input type="text" id="sensor_name" name="sensor_name">
+        <button type="submit">Add Sensor</button>
+    </form>
+</body>
+</html>
