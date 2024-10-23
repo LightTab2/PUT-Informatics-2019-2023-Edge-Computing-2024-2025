@@ -1,0 +1,12 @@
+nazwa cena ilosc elastycznosc wytrzymalosc_mechaniczna wytrzymalosc_termiczna wyrzymalosc_chemiczna
+PLA 80 3000 40 40 10 40
+ABS 80 2000 0 80 80 75
+ABS-S 120 1000 5 90 100 80
+PET-G 90 1500 25 95 55 100
+FLEX 120 3000 100 20 20 85
+BIO 60 500 50 10 0 0
+HIPS 80 500 20 80 10 0
+NYLON 170 1000 70 80 90 70
+PEEK 190 1000 0 140 120 100
+PLA 60 4000 10 10 0 0
+ASA 90 1000 30 20 20 60

@@ -1,0 +1,24 @@
+void MainWindow::readHidden()
+{
+    hiddenText.clear();
+    QByteArray charArray;
+
+    charArray.resize(8);
+    generateBits(steg.size());
+    for (quint32 i = 0u, j = 0u; i != steg.size() - 8u; ++i)
+    {
+        if ((i % 4u) == 3u)
+            continue;
+
+        charArray[7u - (j % 8u)] = '0' + ((steg[i] & 1) ^ rngBits[j]);
+        if ((++j % 8u) == 0u)
+        {
+            uchar c = static_cast<char>(QString(charArray).toUInt(nullptr, 2));
+            if (c == '\0')
+                break;
+
+            hiddenText.append(c);
+        }
+    }
+    ui->hiddenText->setPlainText(QString::fromUtf8(hiddenText));
+}
