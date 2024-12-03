@@ -1,0 +1,50 @@
+import cli
+import conf
+import simics
+import stest
+import os
+
+def test_stick():
+	memory = conf.board.phys_mem.memory[0x01000000:0x0100000C])
+	conf.board.console.con.cli_cmds.wait_for_string(string="#")
+	print("Saw '#' on the console")
+	print("test 4 * 6")
+	#memory[2] = 42
+	#memory[0] = 4
+	#memory[1] = 6
+	conf.board.phys_mem.memory[0x01000000 + 2 * 0x4] = 42
+	conf.board.phys_mem.memory[0x01000000] = 4
+	conf.board.phys_mem.memory[0x01000000 + 0x4] = 6
+	print("wynik =", memory[3])
+	
+	print("test 20 - 20")
+	#memory[2] = 45
+	#memory[0] = 20
+	#memory[1] = 20
+	conf.board.phys_mem.memory[0x01000000 + 2 * 0x4] = 45
+	conf.board.phys_mem.memory[0x01000000] = 20
+	conf.board.phys_mem.memory[0x01000000 + 0x4] = 20
+	print("wynik =", memory[3])
+	
+	print("test 20 - 14")
+	#memory[1] = 14
+	#memory[0] = 20
+	conf.board.phys_mem.memory[0x01000000 + 0x4] = 14
+	conf.board.phys_mem.memory[0x01000000] = 20
+	print("wynik =", memory[3])
+	
+	print("test 20 - 14 (odwrotna kolejność zapisu)")
+	#memory[0] = 20
+	#memory[1] = 14
+	conf.board.phys_mem.memory[0x01000000] = 20
+	conf.board.phys_mem.memory[0x01000000 + 0x4] = 14
+	print("wynik =", memory[3])
+	
+	print("test 24 + 11")
+	#memory[2] = 43
+	#memory[0] = 24
+	#memory[1] = 11
+	conf.board.phys_mem.memory[0x01000000 + 2 * 0x4] = 43
+	conf.board.phys_mem.memory[0x01000000] = 24
+	conf.board.phys_mem.memory[0x01000000 + 0x4] = 11
+	print("wynik =", memory[3])

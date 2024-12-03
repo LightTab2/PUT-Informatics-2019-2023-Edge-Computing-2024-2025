@@ -31,4 +31,9 @@ board.phys_mem.write 0x01000000 4
 board.phys_mem.write 0x01000004 6
 echo "wynik = " + (board.phys_mem.read 0x0100000C)
 
+echo "PYTHON TIME"
+
+run-python-file test-stick
+@cli.sb_create(test_stick)
+
 run

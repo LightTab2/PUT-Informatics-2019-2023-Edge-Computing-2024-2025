@@ -64,10 +64,10 @@ static ssize_t writeKObjectAttribute(struct kobject* kobj, struct kobj_attribute
 }
 
 static struct kobject* firstDeviceKObject;
-static struct kobj_attribute arg1Attribute = __ATTR(arg1,      0660, readKObjectAttribute, writeKObjectAttribute);
-static struct kobj_attribute arg2Attribute = __ATTR(arg2,      0660, readKObjectAttribute, writeKObjectAttribute);
-static struct kobj_attribute opAttribute   = __ATTR(operation, 0660, readKObjectAttribute, writeKObjectAttribute);
-static struct kobj_attribute resAttribute  = __ATTR(result,    0660, readKObjectAttribute, NULL);
+static struct kobj_attribute arg1Attribute = __ATTR("arg1",      0660, readKObjectAttribute, writeKObjectAttribute);
+static struct kobj_attribute arg2Attribute = __ATTR("arg2",      0660, readKObjectAttribute, writeKObjectAttribute);
+static struct kobj_attribute opAttribute   = __ATTR("operation", 0660, readKObjectAttribute, writeKObjectAttribute);
+static struct kobj_attribute resAttribute  = __ATTR("result",    0660, readKObjectAttribute, NULL);
 
 static void spawnTestScript(void) //voodoo magic
 {
